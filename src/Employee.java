@@ -1,42 +1,31 @@
 public class Employee {
     private String name;
-    private double salary;
+    private double baseSalary;
     private double bonus;
 
-    public Employee(String name, double salary) {
-        if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException("Name must not be empty.");
+    public Employee(String name, double baseSalary) {
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be null or empty.");
         }
-        if (salary <= 0) {
-            throw new IllegalArgumentException("Salary must be greater than zero.");
+        if (baseSalary < 0) {
+            throw new IllegalArgumentException("Base salary must be non-negative.");
         }
         this.name = name;
-        this.salary = salary;
-    }
-
-    public String getName() {
-        return name;
+        this.baseSalary = baseSalary;
     }
 
     public double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(double salary) {
-        if (salary <= 0) {
-            throw new IllegalArgumentException("Salary must be greater than zero.");
-        }
-        this.salary = salary;
+        return baseSalary + bonus;
     }
 
     public void setBonus(double bonus) {
-        if (bonus <= 0) {
-            throw new IllegalArgumentException("Bonus must be greater than zero.");
+        if (bonus < 0) {
+            throw new IllegalArgumentException("Bonus must be non-negative.");
         }
         this.bonus = bonus;
     }
 
-    public double toPay() {
-        return salary + bonus;
+    public String getName() {
+        return name;
     }
 }

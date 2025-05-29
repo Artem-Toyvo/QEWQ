@@ -1,8 +1,8 @@
 public class SalesPerson extends Employee {
     private int percent;
 
-    public SalesPerson(String name, double salary, int percent) {
-        super(name, salary);
+    public SalesPerson(String name, int percent) {
+        super(name, 200);
         if (percent < 0) {
             throw new IllegalArgumentException("Percent must be greater than or equal to zero.");
         }
@@ -21,5 +21,9 @@ public class SalesPerson extends Employee {
         } else {
             super.setBonus(bonus);
         }
+    }
+
+    public int getExperience() {
+        return percent;
     }
 }
