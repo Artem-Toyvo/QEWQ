@@ -1,19 +1,42 @@
-public abstract class Employee {
+public class Employee {
     private String name;
-    private int experience;
+    private double salary;
+    private double bonus;
 
-    protected Employee(String name, int experience) {
+    public Employee(String name, double salary) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Name must not be empty.");
+        }
+        if (salary <= 0) {
+            throw new IllegalArgumentException("Salary must be greater than zero.");
+        }
         this.name = name;
-        this.experience = experience;
+        this.salary = salary;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getExperience() {
-        return experience;
+    public double getSalary() {
+        return salary;
     }
 
-    public abstract int getSalary();
+    public void setSalary(double salary) {
+        if (salary <= 0) {
+            throw new IllegalArgumentException("Salary must be greater than zero.");
+        }
+        this.salary = salary;
+    }
+
+    public void setBonus(double bonus) {
+        if (bonus <= 0) {
+            throw new IllegalArgumentException("Bonus must be greater than zero.");
+        }
+        this.bonus = bonus;
+    }
+
+    public double toPay() {
+        return salary + bonus;
+    }
 }
