@@ -1,5 +1,3 @@
-package com.epam.rd.qa.inheritance;
-
 public abstract class Employee {
     private String name;
     private int experience;
